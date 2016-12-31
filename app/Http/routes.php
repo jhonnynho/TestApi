@@ -15,13 +15,13 @@ $app->get('/', function () use ($app) {
     return $app->version();
 });
 
-$app->get ( '/api/users/info/{email}', 'UserController@getUserInfo' );
-
 $app->post('api/auth/login', 'AuthController@postLogin');
 
 $app->group(['middleware' => 'auth:api'], function($app)
 {
     $app->get ( '/api/users/me', 'App\Http\Controllers\UserController@getMyUserInfo' );
+
+    $app->get ( '/api/users/info/{email}', 'UserController@getUserInfo' );
 
     $app->get ( '/api/users', 'App\Http\Controllers\UserController@getAllUser' );
 

@@ -22,8 +22,7 @@ class TaskController extends Controller
 
     public function createTask(Request $request) {
         $user_logged = $this->jwt->user();
-        if($user_logged->role->role==="Administrator")
-        {
+        if($user_logged->role->role==="Administrator"){
             $this->validate($request, [
                 'title'    => 'required',
                 'description' => 'required',
@@ -37,7 +36,8 @@ class TaskController extends Controller
             $task->due_date = $request->due_date;
             $task->assigned_to = User::where('email','=',$request->assigned_to)->select('id')->value('id');
             $task->created_by = $user_logged->id;
-            $task->priority = ($request->priority === "High" ? 1 : ($request->priority === "Medium" ? 2 : ($request->priority === "Slow" ? 3 : 3)));
+            $task->priority = ($request->priority === "High" ? 1 : ($request->priority === "Medium" ? 2 : 
+                ($request->priority === "Low" ? 3 : 3)));
             $task->save();
             return response ()->json ( "Tarea Creada" , 200 );
         }
@@ -48,7 +48,8 @@ class TaskController extends Controller
 
     public function getTasks(){
         $user_logged = $this->jwt->user();
-        $task = Task::with('created_by','priority')->where('assigned_to','=',$user_logged->id)->orderBy('priority','asc')->get();
+        $task = Task::with('created_by','priority')->where('assigned_to','=',$user_logged->id)
+        ->orderBy('priority','asc')->get();
         return response ()->json ($task);
     }
 

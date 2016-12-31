@@ -21,8 +21,7 @@ class UserController extends Controller
 
     public function createUser(Request $request) {
         $user_logged = $this->jwt->user();
-        if($user_logged->role->role==="Administrator")
-        {
+        if($user_logged->role->role==="Administrator"){
             $user = new User;
             $user->firstname = $request->firstname;
             $user->lastname = $request->lastname;
@@ -61,15 +60,13 @@ class UserController extends Controller
 
     public function updateUser(Request $request) {
         $user = $this->jwt->user();
-        if ($request->has('firstname'))
-        {
+        if ($request->has('firstname')){
             $firstname = $request->firstname;
         }
         else{
             $firstname = $user->firstname;
         }
-        if ($request->has('lastname'))
-        {
+        if ($request->has('lastname')){
             $lastname = $request->lastname;
         }
         else{
@@ -85,15 +82,12 @@ class UserController extends Controller
 
     public function manageRoles(Request $request){
         $user_logged = $this->jwt->user();
-        if($user_logged->role->role==="Administrator")
-        {
-            if ($request->has('email') && $request->has('role'))
-            {
+        if($user_logged->role->role==="Administrator"){
+            if ($request->has('email') && $request->has('role')){
                 $email = $request->email;
                 $role_id = ($request->role === "Administrator") ? 1 : ($request->role === "Employee" ? 2 : 2);
             }
-            else
-            {
+            else{
                 return response ()->json ( "No se ha recibido datos a actualizar" , 401 );
             }
 

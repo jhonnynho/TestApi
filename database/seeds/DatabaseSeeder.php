@@ -48,7 +48,7 @@ class PrioritySeeder extends Seeder
 {
     public function run()
     {
-        $data=array('High','Medium','Slow');
+        $data=array('High','Medium','Low');
 
         for($i=0;$i<count($data);$i++){
             $priority = new Priority;
