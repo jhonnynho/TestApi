@@ -1,9 +1,18 @@
-## tymon/jwt-auth Demo
+## TestAPI
 
-This code demos how to use [tymon/jwt-auth](https://github.com/tymondesigns/jwt-auth) with Lumen 5.2. As of writing there is no documentation for tne `^1.0@dev/alpha` versions
+Para correr las migraciones tipear 
 
-https://iwader.co.uk/post/tymon-jwt-auth-with-lumen-5-2
+php artisan migrate
 
-### License
+Para anexar data por defecto en las tablas tipear
 
-[MIT license](http://opensource.org/licenses/MIT)
+php artisan db:seed
+
+La BD tiene 4 tablas que son Users, Task, Roles, Priorities
+
+La tabla Roles define los tipos de Usuarios (Administrator, Employee)
+La tabla Priorities define las prioridades de las tareas (High, Medium, Slow)
+
+Para iniciar el API desde consola ir hasta la carpeta y tipear php -S localhost:8000 -t public
+
+De igual manera puede anexarse en el Htdocs de Xampp, Wamp o Lamp
