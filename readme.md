@@ -23,7 +23,7 @@ De igual manera puede anexarse en el Htdocs de Xampp, Wamp o Lamp
 
 ## Rutas Privadas
 
-{host}/api/users/me - - Informacion de Usuario - - Metodo GET
+{host}/api/users/me - - Informacion de Usuario - - Metodo GET (La informacion se obtiene por el JWT)
 
 {host}/api/users/info/{email} - - Informacion de Usuario recibiendo email - - Metodo GET
 
@@ -38,3 +38,5 @@ De igual manera puede anexarse en el Htdocs de Xampp, Wamp o Lamp
 {host}/api/task - - Creacion de Tareas - - Metodo POST - - Recibe title, description, due_date, assigned_to, priority
 
 {host}/api/task - - Devuelve tareas asignadas ordenadas por prioridad - - Metodo GET
+
+Servicios probados via Postman
