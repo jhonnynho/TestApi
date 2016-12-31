@@ -37,4 +37,9 @@ class User extends Model implements JWTSubject, AuthenticatableContract, Authori
         return $this->belongsTo('App\Models\User');
     }
 
+    public function task ()
+    {
+        return $this->hasMany('App\Models\Task','assigned_to');
+    }
+
 }
